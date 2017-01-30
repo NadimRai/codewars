@@ -1,3 +1,3 @@
 git add .
-git commit -m"Basic Algorithm"
+git commit -m"Codewars Javascript Solution"
 git push origin master

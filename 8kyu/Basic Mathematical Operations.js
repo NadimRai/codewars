@@ -1,4 +1,4 @@
-Basic Mathematical Operations
+Basic Mathematical Operations:
 
 The function should take three arguments - operation(string/char), value1(number), value2(number). 
 The function should return result of numbers after applying the chosen operation.
