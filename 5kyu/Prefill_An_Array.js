@@ -20,11 +20,39 @@ prefill(3, prefill(2,'2d'))
 
 prefill("xyz", 1)
 --> throws TypeError with message "xyz is invalid"
+
+function prefill(n, v) {
+  if( isValidInt(n) ) throw new PrefillException(n);
+  
+  var a = [];
+  
+  for( var i = 0; i < n; i++ ) {
+    a.push(v);
+  }
+  
+  return a;
+}
+
+function PrefillException(n) {
+   this.message = (n + " is invalid");
+   this.name = "TypeError";
+}
+
+function isValidInt( n ) {
+  return isNaN(n) || !isFinite(n) || (n % 1 !== 0) || n < 0 || ("boolean" == typeof n);
+}
+
+const prefill = (n = 0, value) => {
+  const length = parseFloat(n)
+  if (length < 0 || !Number.isInteger(length)) throw new TypeError(n + ' is invalid')
+  return Array(length).fill(value)
+}
+
 */
 
 function prefill(n, v) {
-    if (/\D/g.test(n) || n < 0) { throw new TypeError(n + ' is invalid') }
-    return Array.apply(null, new Array(parseInt(n, 10))).map(function () { return v; });
-}
-
-prefill(3, prefill(2, '2d'))
+    if (/\D/g.test(n) || n < 0) {throw new TypeError(n + ' is invalid')}
+    return Array.apply(null, new Array(parseInt(n, 10))).map(function() {return v;});
+  }
+  
+   prefill(3, prefill(2,'2d'))
